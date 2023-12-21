@@ -118,6 +118,33 @@ class Solution2:
 Lattice = Solution2()
 print(Lattice.countLatticePoints([[2,2,2],[3,4,1]]))
 
+#add two sums
 
 
-    
+l1 = [9,9,9,9,9,9,9,9]
+l2 = [9,9,9,9]
+n1=len(l1)
+n2 = len(l2)
+answer = 0
+
+for i in range(n1):
+    answer = answer + l1[i]*10**i+l2[i]*10**i
+
+print(answer)
+
+string = "abcdkel"
+print(string[5] == string[6])
+
+#longest substring without repeated characters.
+
+class Solution7:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l, r = 0, 0
+        dic = {}
+        res = 0
+        for r in range(len(s)):
+            if s[r] in dic and dic[s[r]] >= l:
+                l = dic[s[r]] + 1
+            res = max(res, r - l + 1) # why do we need this?
+            dic[s[r]] = r
+        return res
